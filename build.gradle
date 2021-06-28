@@ -1,5 +1,5 @@
 buildscript {
-    ext.libVersion = "0.0.1"
+    ext.libVersion = "0.0.2"
     ext.libGroup = 'io.github.adven27'
 }
 
