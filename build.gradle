@@ -1,0 +1,17 @@
+buildscript {
+    ext.libVersion = "0.0.1"
+    ext.libGroup = 'io.github.adven27'
+}
+
+group = libGroup
+version = libVersion
+
+subprojects {
+    group = libGroup
+    version = libVersion
+}
+
+task publishMaven {
+    dependsOn ":jbloomberg:publish"
+    dependsOn ":jbloomberg-test:publish"
+}

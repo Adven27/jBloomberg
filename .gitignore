@@ -1,6 +1,21 @@
-/target/
-/nbactions.xml
-/*.iml
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+gradle.properties
+
+### IntelliJ IDEA ###
 .idea
-/pit-reports/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+###
 /src/test/resources/auth_setup

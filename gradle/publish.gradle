@@ -1,0 +1,68 @@
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+javadoc.failOnError = false
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = project.name
+            from components.java
+            pom {
+                name = project.name
+                description = 'The high-level API that wraps the Bloomberg Desktop Java API'
+                url = 'https://github.com/Adven27/jBloomberg'
+
+                licenses {
+                    license {
+                        name = "The Apache Software License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "Adven27"
+                        name = "Nikolai Toropanov"
+                        email = "n.toropanov@gmail.com"
+                    }
+                }
+                scm {
+                    url = "https://github.com/Adven27/jBloomberg"
+                    connection = 'scm:git:git://github.com/Adven27/jBloomberg.git'
+                    developerConnection = 'scm:git:git://github.com/Adven27/jBloomberg.git'
+                }
+            }
+            repositories {
+                maven {
+                    name = 'ossrh'
+                    credentials(PasswordCredentials)
+                    url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                }
+            }
+        }
+    }
+}
+
+apply plugin: 'signing'
+signing {
+    if (project.hasProperty('signingKey') && project.hasProperty('signingPassword')) {
+        useInMemoryPgpKeys(project.getProperty('signingKey'), project.getProperty('signingPassword'))
+        sign publishing.publications.mavenJava
+    }
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}

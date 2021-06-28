@@ -1,0 +1,3 @@
+rootProject.name = 'jBloomberg'
+include('jbloomberg')
+include('jbloomberg-test')
