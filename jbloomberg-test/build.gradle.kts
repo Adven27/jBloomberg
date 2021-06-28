@@ -11,9 +11,8 @@ repositories {
 
 dependencies {
     implementation(project(":jbloomberg"))
-    implementation("org.mockito:mockito-all:1.10.19")
+    implementation("org.mockito:mockito-core:1.10.19")
     implementation("org.slf4j:slf4j-api:1.7.25")
-    implementation("org.slf4j:slf4j-simple:1.7.25")
 }
 
 tasks.test {

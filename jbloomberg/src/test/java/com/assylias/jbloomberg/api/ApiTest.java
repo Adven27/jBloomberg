@@ -21,7 +21,6 @@ import java.util.stream.Stream;
 
 import static java.lang.ClassLoader.getSystemResource;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.time.LocalDate.now;
 import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.Arrays.asList;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -75,8 +74,8 @@ public class ApiTest {
 
     @Test
     public void test_HistoricalExample() throws Exception {
-        LocalDate from = now().minusDays(2);
-        LocalDate to = now();
+        LocalDate from = LocalDate.of(2021, 6, 26);
+        LocalDate to = LocalDate.of(2021, 6, 28);
         session.mockRequestResponse(
             readFile("refdataSchema.xml"),
             //Historical request returns separate response for each security

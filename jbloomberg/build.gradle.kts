@@ -13,9 +13,9 @@ dependencies {
     api(files("$rootDir/libs/blpapi-3.16.3-1.jar"))
     implementation("com.google.guava:guava:30.1.1-jre")
     implementation("org.slf4j:slf4j-api:1.7.25")
+    testImplementation("org.jmockit:jmockit:1.38")
     testImplementation(project(":jbloomberg-test"))
     testImplementation("org.awaitility:awaitility:4.1.0")
-    testImplementation("org.jmockit:jmockit:1.38")
     testImplementation("org.testng:testng:6.11")
 }
 
